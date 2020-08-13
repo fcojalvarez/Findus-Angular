@@ -27,13 +27,11 @@ With a simple questionnaire, you can determine your needs and recommend a smartp
 
 <ul>
   <li>Angular</li>
-  <li>?</li>
+  <li>Tailwind CSS</li>
   <li>AXIOS</li>
   <li>JWT</li>
-  <li>?</li>
   <li>Firebase (login only)</li>
   <li>MomentJS</li>
-  <li>v?</li>
 </ul>
 
 
