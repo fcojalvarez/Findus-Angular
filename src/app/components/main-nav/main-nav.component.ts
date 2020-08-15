@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-main-nav',
@@ -7,11 +7,18 @@ import { Component, OnInit } from '@angular/core';
     '.active{ border-bottom: 2px solid #ffd04b }'
   ]
 })
-export class MainNavComponent implements OnInit {
+export class MainNavComponent {
 
-  constructor() { }
+  public showmenu:boolean = false;
 
-  ngOnInit(): void {
+  constructor() {
+    this.checkWidth()
+  }
+
+
+  checkWidth(){
+    const vp:number = window.innerWidth;
+    if(vp > 640) this.showmenu = true;
   }
 
 }

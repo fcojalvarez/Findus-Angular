@@ -1,0 +1,80 @@
+<div class="m-4">
+    <div class="max-w-sm rounded-lg overflow-hidden shadow p-2 m-auto">
+        <img class="w-3/4 m-auto" [src]="selectDevice.image" alt="Sunset in the mountains">
+        <div class="px-6 py-4 text-center">
+            <div class="font-bold text-gray-700 text-xl">{{selectDevice.Brand}}</div>
+            <div class="text-gray-700 mb-2">{{ selectDevice.DeviceName}}</div>
+            <div *ngFor="let os of selectDevice.os">
+                <div class="text-gray-700 mb-2">{{ os.split(';')[0] }}</div>
+            </div>
+
+            <button *ngIf="true" class="bg-yellow-300 p-2 rounded text-gray-800 border border-solid border-gray-600 my-4 block m-auto min-w-full sm:min-w-3/4 lg:min-w-1/2">Add to favorite</button>
+
+            <button *ngIf="true" class="bg-gray-700 p-2 rounded text-yellow-400 border border-solid border-gray-800 my-4 block m-auto min-w-full sm:min-w-3/4 lg:min-w-1/2">Register</button>
+
+            <button *ngIf="false" class="bg-red-600 p-2 rounded text-white border border-solid border-red-800 my-4 block m-auto min-w-full sm:min-w-3/4 lg:min-w-1/2">Delete to favorite</button>
+
+            <div class="text-left w-4/5 m-auto">
+                <i class="fas fa-microchip text-gray-700 mr-3 text-lg"></i>
+                <p class="inline text-lg font-semibold text-gray-800">Pantalla</p>
+                <div class="pl-8">
+                    <span *ngFor="let display of selectDevice.display; index as index" class="text-gray-700 mb-2 block">
+                        {{ display }}
+                    <span *ngIf="selectDevice.display[index] === selectDevice.display[1]"> pulgadas</span>
+                    <span *ngIf="selectDevice.display[index] === selectDevice.display[2]"> ratio de pantalla</span>
+                    </span>
+                </div>
+
+                <i class="fas fa-camera text-gray-700 mr-3 text-lg"></i>
+                <p class="inline text-lg font-semibold text-gray-800">Cámara trasera</p>
+                <div class="pl-8">
+                    <span *ngFor="let frontCam of selectDevice.camera | keyvalue" class="text-gray-700 mb-2 block">
+                        {{ frontCam.value }}
+                    </span>
+                </div>
+
+                <i class="fas fa-microchip text-gray-700 mr-3 text-lg"></i>
+                <p class="inline text-lg font-semibold text-gray-800">Procesador</p>
+                <div class="pl-8">
+                    <span class="text-gray-700 block mb-2">{{ selectDevice.cpu }}</span>
+                </div>
+
+                <i class="fas fa-memory text-gray-700 mr-3 text-lg"></i>
+                <p class="inline text-lg font-semibold text-gray-800">Almacenamiento</p>
+                <div class="pl-8">
+                    <span *ngFor="let item of selectDevice.rom; index as index" class="text-gray-700 mb-2 block">
+                        {{item}} GB
+                      </span>
+                </div>
+
+                <i class="fas fa-memory text-gray-700 mr-3 text-lg"></i>
+                <p class="inline text-lg font-semibold text-gray-800">Memoria RAM</p>
+                <div class="pl-8">
+                    <span *ngFor="let item of selectDevice.ram; index as index" class="text-gray-700 mb-2 block">
+                        {{item}} GB
+                      </span>
+                </div>
+
+                <i class="fas fa-memory text-gray-700 mr-3 text-lg"></i>
+                <p class="inline text-lg font-semibold text-gray-800">Batería</p>
+                <div class="pl-8">
+                    <span class="text-gray-700 mb-2 block">{{ selectDevice.battery }}</span>
+                </div>
+
+                <i class="fas fa-plus-circle text-gray-700 mr-3 text-lg"></i>
+                <p class="inline text-lg font-semibold text-gray-800">Características adicionales</p>
+                <div class="pl-8">
+                    <span *ngFor="let feature of selectDevice.features | keyvalue" class="text-gray-700 mb-2 block">
+                        <span>{{ feature.value }}</span>
+                    </span>
+                </div>
+
+                <i class="fas fa-memory text-gray-700 mr-3 text-lg"></i>
+                <p class="inline text-lg font-semibold text-gray-800">Precio</p>
+                <div class="pl-8">
+                    <span class="text-gray-700 mb-2 block">{{ selectDevice.price }}€</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

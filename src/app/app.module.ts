@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { RandomDevicesComponent } from './components/random-devices/random-devices.component';
+import { DeviceComponent } from './components/device/device.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,14 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     HomeComponent,
     ContactComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    RandomDevicesComponent,
+    DeviceComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
