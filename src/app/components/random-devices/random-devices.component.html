@@ -1,5 +1,5 @@
-<div class="md:flex">
-    <div *ngFor="let device of devicesRandom">
-        <app-device class="sm:w-1/2" [selectDevice]="device"></app-device>
+<div class="md:flex w-full m-auto">
+    <div *ngFor="let device of devicesRandom" class="mx-auto">
+        <app-device class="sm:w-4/5 md:w-full lg:max-w-5xl" [selectDevice]="device"></app-device>
     </div>
 </div>

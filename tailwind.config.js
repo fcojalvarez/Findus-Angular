@@ -1,7 +1,13 @@
 module.exports = {
     purge: [],
     theme: {
-        extend: {},
+        extend: {
+            spacing: {
+                '72': '18rem',
+                '84': '21rem',
+                '96': '24rem'
+            }
+        },
         minWidth: {
             '0': '0',
             '3/4': '75%',

@@ -1,14 +1,14 @@
 <ul class="w-full text-lg">
-    <div class="sm:hidden text-white text-center pb-4 text-xl" (click)="showmenu = !showmenu">Menu <i class="fas fa-caret-down"></i></div>
+    <div class="sm:hidden text-white text-center pb-4 text-xl" (click)="showmenu = !showmenu">Menú <i class="fas fa-caret-down"></i></div>
     <div *ngIf="showmenu" class="sm:flex sm:justify-end sm:block">
-        <li class="w-full sm:w-24 xl:w-28 text-center p-2 sm:p-0 sm:py-2 m-1 sm:m-0">
-            <a class="text-white hover:text-yellow-400 py-2 px-6 sm:py-2" [routerLink]="['home']" routerLinkActive="active">Home</a>
+        <li class="w-full sm:w-32 xl:w-28 text-center p-2 sm:p-0 sm:py-2 m-1 sm:m-0">
+            <a class="text-white hover:text-yellow-400 py-2 px-6 sm:py-2" [routerLink]="['home']" routerLinkActive="active">Inicio</a>
         </li>
-        <li class="w-full sm:w-24 xl:w-28 text-center p-2 sm:p-0 sm:py-2 m-1 sm:m-0">
-            <a class="text-white hover:text-yellow-400 py-2 px-6 sm:py-2" [routerLink]="['contact']" routerLinkActive="active">Contact</a>
+        <li class="w-full sm:w-32 xl:w-28 text-center p-2 sm:p-0 sm:py-2 m-1 sm:m-0">
+            <a class="text-white hover:text-yellow-400 py-2 px-6 sm:py-2" [routerLink]="['contact']" routerLinkActive="active">Contacto</a>
         </li>
-        <li class="w-full sm:w-24 xl:w-28 text-center p-2 sm:p-0 sm:py-2 m-1 sm:m-0">
-            <a class="text-white hover:text-yellow-400 py-2 px-6 sm:py-2" [routerLink]="['login']" routerLinkActive="active">Login</a>
+        <li class="w-full sm:w-40 xl:w-28 text-center p-2 sm:p-0 sm:py-2 m-1 sm:m-0">
+            <a class="text-white hover:text-yellow-400 py-2 px-6 sm:py-2" [routerLink]="['login']" routerLinkActive="active">Iniciar sesión</a>
         </li>
     </div>
 </ul>

@@ -9,10 +9,11 @@ export class DevicesService {
 
   private url: string = 'https://findusapi.herokuapp.com';
 
-  constructor(private http: HttpClient) {   }
+  constructor(private http: HttpClient) { 
+  }
 
   getDevices(){
-    return this.http.get(this.url)
+    return this.http.get(`${this.url}/devices`)
   }
 
   getDevicesRandom(){

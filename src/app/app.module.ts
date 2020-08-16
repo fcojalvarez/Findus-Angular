@@ -13,6 +13,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RandomDevicesComponent } from './components/random-devices/random-devices.component';
 import { DeviceComponent } from './components/device/device.component';
+import { DevicePageComponent } from './pages/device-page/device-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DeviceComponent } from './components/device/device.component';
     LoginComponent,
     NotFoundComponent,
     RandomDevicesComponent,
-    DeviceComponent
+    DeviceComponent,
+    DevicePageComponent
   ],
   imports: [
     BrowserModule,
