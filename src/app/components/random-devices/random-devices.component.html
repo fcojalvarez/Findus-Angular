@@ -1,5 +1,9 @@
 <div class="md:flex w-full m-auto">
     <div *ngFor="let device of devicesRandom" class="mx-auto">
-        <app-device class="sm:w-4/5 md:w-full lg:max-w-5xl" [selectDevice]="device"></app-device>
+        <app-device [selectDevice]="device"></app-device>
     </div>
+</div>
+<div *ngIf="!devicesRandom" class="text-center py-48">
+    <p class="text-2xl animate-pulse">Obteniendo dispositivos...</p>
+    <p class="text-gray-700">Espere por favor.</p>
 </div>

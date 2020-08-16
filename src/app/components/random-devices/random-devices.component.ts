@@ -15,4 +15,6 @@ export class RandomDevicesComponent implements OnInit {
     this._DeviceService.getDevicesRandom().subscribe(data => { this.devicesRandom = data } )
   }
 
+  
+
 }

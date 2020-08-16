@@ -10,8 +10,8 @@ import { DevicesService } from '../../services/devices.service';
 })
 export class DevicePageComponent implements OnInit {
 
-  public device;
-  public deviceID;
+  public device : {};
+  public deviceID: string;
 
   constructor(route: ActivatedRoute, private _DeviceService: DevicesService) {
     route.params.subscribe( data => this.deviceID = data.id);
@@ -23,6 +23,8 @@ export class DevicePageComponent implements OnInit {
         .subscribe( ( data: Array<any> ) =>  {
           this.device = data.filter( device => device._id === this.deviceID )[0];
         })
+      
   }
+
   
 }

@@ -1,4 +1,4 @@
-<div class="m-4">
+<div class="my-4 mx-2" [ngClass]="{ ' w-96' : !deviceID }">
     <div [ngClass]="{ 'rounded-lg' : !deviceID, 'shadow' : !deviceID, 'sm:flex' : deviceID, 'sm:wax-w-none' : deviceID }" class="m-auto overflow-hidden p-2 max-w-4xl min-w-1/4">
         <div [ngClass]="{'sm:w-72' : deviceID}" class="text-center">
             <a [routerLink]="['/devices', selectDevice._id]">

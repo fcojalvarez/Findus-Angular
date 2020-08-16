@@ -27,7 +27,7 @@ import { DevicePageComponent } from './pages/device-page/device-page.component';
     NotFoundComponent,
     RandomDevicesComponent,
     DeviceComponent,
-    DevicePageComponent
+    DevicePageComponent,
   ],
   imports: [
     BrowserModule,
