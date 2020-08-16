@@ -1,7 +1,6 @@
 import { Component, OnInit, ɵConsole } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { DevicesService } from '../../services/devices.service';
-import { filter } from 'rxjs/operators'
 
 @Component({
   selector: 'app-device-page',
