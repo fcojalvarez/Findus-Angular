@@ -21,8 +21,8 @@ export class DevicePageComponent implements OnInit {
   ngOnInit(): void {
 
     this._DeviceService.getDevices()
-        .subscribe( data => {
-          this.device = data[0]/* .filter( device => device._id === this.deviceID )[0] */
+        .subscribe( ( data: Array<any> ) =>  {
+          this.device = data.filter( device => device._id === this.deviceID )[0];
         })
   }
   
