@@ -14,6 +14,12 @@ module.exports = {
             '1/4': '25%',
             '1/2': '50%',
             'full': '100%',
+        },
+        minHeight: {
+            'screen-90': '90vh',
+        },
+        backgroundSize: {
+            '40%': '40%',
         }
     },
     variants: {},

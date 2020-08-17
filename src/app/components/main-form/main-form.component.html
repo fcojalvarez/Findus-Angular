@@ -1,0 +1,45 @@
+<div class="mx-auto min-h-screen-90 flex  justify-center items-center text-center bg-no-repeat bg-40% bg-right-bottom backgroundForm" style="background-image: url(../../../assets/images/3892620.png)">
+
+    <form *ngFor="let form of forms ; index as i" class="block">
+        <div *ngIf="selection[i][1]">
+            <h3 class="text-3xl text-gray-700">{{ titleForm[i] }}</h3>
+
+
+            <label class="md:w-2/3 block text-gray-500 font-bold">
+                <input class="mr-2 leading-tight" label="hola" type="radio">
+                <input class="mr-2 leading-tight" label="hola" type="radio">
+                <input class="mr-2 leading-tight" label="hola" type="radio">
+    
+              </label>
+
+        </div>
+
+    </form>
+
+    <!-- <button class="bg-gray-200 border border-gray-500 px-5 py-2 rounded block">Siguiente</button> -->
+
+</div>
+
+
+<!-- <form v-for="(form, i) in forms" :key="i" v-show="seleccion[i][1]">
+    <h3 class="subtitle">{{titleForm[i]}}</h3>
+
+    <el-radio-group v-model="infoData[form]" v-show="form !== 'price' && form !== 'features'">
+        <el-radio-button v-for="(label, index) in labels[i]" :label="labels[i][index]" :key="label+index"></el-radio-button>
+    </el-radio-group>
+
+    <div class="block" v-show="form === 'price'">
+        <span class="textDesc">{{infoData.price}}€</span>
+        <el-slider class="sliderPrice" v-model="infoData.price" :show-tooltip="false" :max="1500">
+        </el-slider>
+        <el-input-number v-model="infoData.price" :max="1500"></el-input-number>
+    </div>
+
+    <div>
+        <el-checkbox-group v-model="infoData.features" v-show="form === 'features'">
+            <el-checkbox style="margin-top: 20px" v-for="item in features" :label="item" border :key="item">{{item}}</el-checkbox>
+        </el-checkbox-group>
+    </div>
+    <br>
+    <el-button class="btnPrim" type="primary" @click.prevent="nextStep(forms[i])">Siguiente</el-button>
+</form> -->

@@ -14,6 +14,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RandomDevicesComponent } from './components/random-devices/random-devices.component';
 import { DeviceComponent } from './components/device/device.component';
 import { DevicePageComponent } from './pages/device-page/device-page.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { MainFormComponent } from './components/main-form/main-form.component';
+
+// TODO: Crear módulo para rutas.
 
 @NgModule({
   declarations: [
@@ -28,6 +32,8 @@ import { DevicePageComponent } from './pages/device-page/device-page.component';
     RandomDevicesComponent,
     DeviceComponent,
     DevicePageComponent,
+    LoaderComponent,
+    MainFormComponent,
   ],
   imports: [
     BrowserModule,

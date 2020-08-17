@@ -13,6 +13,7 @@ export class RandomDevicesComponent implements OnInit {
 
   ngOnInit(): void {
     this._DeviceService.getDevicesRandom().subscribe(data => { this.devicesRandom = data } )
+
   }
 
   
