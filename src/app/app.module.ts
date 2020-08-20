@@ -18,6 +18,7 @@ import { DevicePageComponent } from './pages/device-page/device-page.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MainFormComponent } from './components/main-form/main-form.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     LoaderComponent,
     MainFormComponent,
     LoginFormComponent,
+    RegisterFormComponent,
   ],
   imports: [
     BrowserModule,
