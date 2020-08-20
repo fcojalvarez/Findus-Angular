@@ -1,0 +1,75 @@
+<div class="min-h-screen-80  my-12 flex flex-col items-center justify-center" *ngIf="isShowFormLogin">
+    <div class="bg-white border-2 border-yellow-400 rounded w-10/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 xl:max-w-fixed1 py-12 px-8 shadow-xl">
+
+        <form class="w-full" [formGroup]="formRegister">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs mb-2" for="grid-password">
+                Email:
+            </label>
+            <input class="block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" type="text" placeholder="Introduzca su email">
+
+            <label class="block uppercase tracking-wide text-gray-700 text-xs mb-2" for="grid-password">
+              Contraseña:
+            </label>
+            <input class="block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" type="password" placeholder="***********">
+        </form>
+
+        <button class="block bg-yellow-400 px-8 py-2 mt-8 text-gray-700 border border-gray-700 rounded w-full ">Iniciar sesión</button>
+
+        <p class="text-center text-sm text-gray-800 mt-6">¿Ha olvidado su contraseña? <span class="font-bold border-b border-yellow-400 cursor-pointer hover:border-white hover:text-yellow-400" (click)="showRegisterForm()">Restablecer contraseña</span></p>
+    </div>
+
+    <p class="text-center text-sm text-gray-800 mt-6">¿No está registrado? <span class="font-bold border-b border-yellow-400 cursor-pointer hover:border-white hover:text-yellow-400" (click)="showRegisterForm()">Crear cuenta</span></p>
+
+</div>
+
+<div class="min-h-screen-80  my-12 flex flex-col items-center justify-center" *ngIf="isShowFormRegister">
+    <div class="bg-white border-2 border-yellow-400 rounded w-10/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 xl:max-w-fixed1 py-12 px-8 shadow-xl">
+
+        <form class="w-full" [formGroup]="formRegister">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs mb-2" for="grid-password">
+                Nombre:
+            </label>
+            <input class="block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" type="text" formControlName="name" placeholder="Introduzca su nombre">
+            <p class="text-red-400 mb-4" *ngIf="name.pristine === false && name.errors.required">Este campo es obligatorio.</p>
+
+            <label class="block uppercase tracking-wide text-gray-700 text-xs mb-2" for="grid-password">
+                Apellidos:
+            </label>
+            <input class="block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" type="text" formControlName="lastname" placeholder="Introduzca sus apellidos">
+            <p class="text-red-400 mb-4" *ngIf="lastname.pristine === false && lastname.errors.required">Este campo es obligatorio.</p>
+
+            <label class="block uppercase tracking-wide text-gray-700 text-xs mb-2" for="grid-password">
+                Email:
+            </label>
+            <input class="block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" type="text" formControlName="email" placeholder="Introduzca su email">
+            <p class="text-red-400 mb-4" *ngIf="email.pristine === false && email.errors.required">Este campo es obligatorio.</p>
+
+            <label class="block uppercase tracking-wide text-gray-700 text-xs mb-2" for="grid-password">
+                Repetir email:
+            </label>
+            <input class="block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" type="text" formControlName="repeatEmail" placeholder="Repita su email">
+            <p class="text-red-400 mb-4" *ngIf="repeatEmail.pristine === false && repeatEmail.errors.required">Este campo es obligatorio.</p>
+            <p class="text-red-400 mb-4" *ngIf="email.value !== repeatEmail.value && email.value">Los emails no coinciden.</p>
+
+            <label class="block uppercase tracking-wide text-gray-700 text-xs mb-2" for="grid-password">
+              Contraseña:
+            </label>
+            <input class="block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" type="password" formControlName="password" placeholder="***********">
+            <p class="text-red-400 mb-4" *ngIf="password.pristine === false && password.errors.required">Este campo es obligatorio.</p>
+
+            <label class="block uppercase tracking-wide text-gray-700 text-xs mb-2" for="grid-password">
+                Repetir contraseña:
+              </label>
+            <input class="block w-full bg-gray-100 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-yellow-500" type="password" formControlName="repeatPassword" placeholder="***********">
+            <p class="text-red-400 mb-4" *ngIf="repeatPassword.pristine === false && repeatPassword.errors.required">Este campo es obligatorio.</p>
+            <p class="text-red-400 mb-4" *ngIf="password.value !== repeatPassword.value">Las contraseñas no coinciden.</p>
+        </form>
+
+        <input type="checkbox" id="agreePolicies">
+        <label for="agreePolicies" class="ml-2">He leído y acepto la <span class="text-yellow-400 font-bold cursor-pointer text-shadow" [routerLink]="['politica']">Política de privacidad</span></label>
+
+        <button class="block bg-yellow-400 px-8 py-2 mt-8 text-gray-700 border border-gray-700 rounded w-full" (click)="register(formRegister)">Registrar</button>
+    </div>
+
+    <p class="text-center text-sm text-gray-800 mt-6">¿Ya tiene cuenta?, <span class="font-bold border-b border-yellow-400 cursor-pointer hover:border-white hover:text-yellow-400" (click)="showLoginForm()">Iniciar sesión</span></p>
+</div>

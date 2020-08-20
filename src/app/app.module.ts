@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
+import { ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,8 +17,8 @@ import { DeviceComponent } from './components/device/device.component';
 import { DevicePageComponent } from './pages/device-page/device-page.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { MainFormComponent } from './components/main-form/main-form.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
-// TODO: Crear módulo para rutas.
 
 @NgModule({
   declarations: [
@@ -34,11 +35,13 @@ import { MainFormComponent } from './components/main-form/main-form.component';
     DevicePageComponent,
     LoaderComponent,
     MainFormComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

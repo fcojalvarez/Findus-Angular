@@ -15,13 +15,19 @@ module.exports = {
             '1/2': '50%',
             'full': '100%',
         },
+        maxWidth: {
+            'fixed1': '500px'
+        },
         minHeight: {
             'screen-90': '90vh',
+            'screen-80': '80vh',
         },
         backgroundSize: {
             '40%': '40%',
         }
     },
-    variants: {},
+    variants: {
+        backgroundColor: ['responsive', 'hover', 'focus', 'checked'],
+    },
     plugins: [],
 }

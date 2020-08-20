@@ -1,4 +1,4 @@
-<div class="my-4 mx-2" [ngClass]="{ ' w-96' : !deviceID }">
+<div class="my-4 mx-2" [ngClass]="{ 'md:w-56 lg:w-72 xl:w-96' : !deviceID }">
     <div [ngClass]="{ 'rounded-lg' : !deviceID, 'shadow' : !deviceID, 'sm:flex' : deviceID, 'sm:wax-w-none' : deviceID }" class="m-auto overflow-hidden p-2 max-w-4xl min-w-1/4">
         <div [ngClass]="{'sm:w-72' : deviceID}" class="text-center">
             <a [routerLink]="['/devices', selectDevice._id]">
@@ -19,7 +19,7 @@
             <button *ngIf="false" class="bg-red-600 p-2 rounded text-white border border-solid border-red-800 my-4 block m-auto min-w-full sm:min-w-3/4 lg:min-w-1/2">Eliminar de favoritos</button>
         </div>
 
-        <div [ngClass]="{ 'md:grid md:grid-flow-row-dense md:gap-4' : deviceID }" class="text-left w-4/5 m-auto">
+        <div [ngClass]="{ 'md:grid md:grid-flow-row-dense md:gap-4 ml-24' : deviceID }" class="text-left w-4/5 m-auto">
             <div>
                 <i class="fas fa-microchip text-gray-700 mr-3 text-lg"></i>
                 <p class="inline text-lg font-semibold text-gray-800">Pantalla</p>
