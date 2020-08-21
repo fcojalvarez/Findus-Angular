@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -6,11 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+
+  public isShowLoginForm: boolean = true;
+  public isShowRegisterForm: boolean = false
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ShowRegisterForm() {
+    this.isShowRegisterForm = true;
+    this.isShowLoginForm = false;
+  };
 
+  ShowLoginForm() {
+    this.isShowRegisterForm = false;
+    this.isShowLoginForm = true;
+  };
 }

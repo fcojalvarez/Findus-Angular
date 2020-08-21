@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router'
-import { pipe } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'login-form',
@@ -36,7 +34,7 @@ export class LoginFormComponent{
 
   onResetForm(){
     this.formLogin.reset();
-  }
+  };
 
   login() {
     const loginData = {
