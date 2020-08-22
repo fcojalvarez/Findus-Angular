@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { ValidatorsService } from '../../services/validators.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'register-form',
@@ -14,7 +14,7 @@ export class RegisterFormComponent {
 
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  constructor( private fb: FormBuilder,private validators: ValidatorsService ) { 
+  constructor( private fb: FormBuilder, private http: HttpClient ) { 
     this.formRegister = this.createForm()
   }
 
@@ -30,7 +30,7 @@ export class RegisterFormComponent {
     return new FormGroup({
       name: new FormControl('', [ Validators.required, Validators.minLength(5) ]),
       lastname: new FormControl('', [ Validators.required, Validators.minLength(5) ]),
-      email: new FormControl('', [ Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern) ], this.validators.userExist),
+      email: new FormControl('', [ Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern) ], this.userExist),
       repeatEmail: new FormControl('', [ Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern) ]),
       password: new FormControl('', [ Validators.required, Validators.minLength(6) ]),
       repeatPassword: new FormControl('', [ Validators.required, Validators.minLength(6) ]),
@@ -70,6 +70,10 @@ export class RegisterFormComponent {
             } catch {
                alert('No hemos podido crear su usuario, por favor inténtelo de nuevo.')
             }; */
+  }
+
+  userExist(){
+    return new Promise( resolve => resolve(true));
   }
 
 }

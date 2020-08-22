@@ -19,6 +19,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { MainFormComponent } from './components/main-form/main-form.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { AboutComponent } from './pages/about/about.component';
+import { LegalComponent } from './pages/legal/legal.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     MainFormComponent,
     LoginFormComponent,
     RegisterFormComponent,
+    AboutComponent,
+    LegalComponent,
   ],
   imports: [
     BrowserModule,
