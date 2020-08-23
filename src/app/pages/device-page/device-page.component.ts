@@ -10,22 +10,20 @@ import { DevicesService } from '../../services/devices.service';
 })
 export class DevicePageComponent implements OnInit {
 
-  public device : {};
+  public device: {};
   public deviceID: string;
 
-  constructor(route: ActivatedRoute, private _DeviceService: DevicesService) {
+  constructor(route: ActivatedRoute, private deviceService: DevicesService) {
     route.params.subscribe( data => this.deviceID = data.id);
   }
 
   ngOnInit(): void {
 
-    this._DeviceService.getDevices()
+    this.deviceService.getDevices()
         .subscribe( ( data: Array<any> ) =>  {
           this.device = data.filter( device => device._id === this.deviceID )[0];
 
-        })
-      
+        });
   }
 
-  
 }

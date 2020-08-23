@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl, AsyncValidator } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class RegisterFormComponent {
 
   public formRegister: FormGroup;
+  private url = 'https://findusapi.herokuapp.com';
 
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -30,7 +31,8 @@ export class RegisterFormComponent {
     return new FormGroup({
       name: new FormControl('', [ Validators.required, Validators.minLength(5) ]),
       lastname: new FormControl('', [ Validators.required, Validators.minLength(5) ]),
-      email: new FormControl('', [ Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern) ]),
+      // tslint:disable-next-line: max-line-length
+      email: new FormControl('', [ Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern) ] ),
       repeatEmail: new FormControl('', [ Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern) ]),
       password: new FormControl('', [ Validators.required, Validators.minLength(6) ]),
       repeatPassword: new FormControl('', [ Validators.required, Validators.minLength(6) ]),
@@ -43,7 +45,7 @@ export class RegisterFormComponent {
     this.formRegister.reset();
   }
 
-  register(): void{
+  register(): Promise<void>{
     const token = window.localStorage.getItem('token');
     if (token) {
       alert('Ya hay una sesión activa actualmente');
@@ -58,16 +60,22 @@ export class RegisterFormComponent {
       image: 'https://cdn0.iconfinder.com/data/icons/user-pictures/100/unknown2-512.png'
     };
 
-    console.log(newUser);
-    /*  const userEmailListDB = await this.$axios.get('users') */ // TODO: validación asincrona
+    const isExist = this.http.get(`${this.url}/users`).subscribe( (users: any[]) => {
+      return users.filter( user => user.email === newUser.email);
+    });
 
-    /* try {
-        const userCreated = await this.$axios.$post('users', newUser)
-        this.onResetForm();
-        alert('Usuario creado correctamente');
+    if (isExist) {
+      alert('usuario ya creado');
+      return;
+    }
+    try {
+      this.http.post(`${this.url}/users`, newUser).subscribe();
+      this.onResetForm();
+      alert('Usuario creado correctamente');
     } catch {
-        alert('No hemos podido crear su usuario, por favor inténtelo de nuevo.')
-    }; */
+      alert('No hemos podido crear su usuario, por favor inténtelo de nuevo.');
+    }
   }
+
 
 }

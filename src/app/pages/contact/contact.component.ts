@@ -12,7 +12,7 @@ export class ContactComponent implements OnInit {
 
   public form: FormGroup;
 
-  constructor( private fb: FormBuilder, private http: HttpClient ) { 
+  constructor( private fb: FormBuilder, private http: HttpClient ) {
     this.formCreate();
   }
 
@@ -28,7 +28,7 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  sendMessage( form: FormControl ): void {
+  sendMessage( form: FormGroup ): void {
     const message: { fullName: string, email: string, subject: string, message: string} = form.value;
     this.http.post<any>('https://findusapi.herokuapp.com/contact', message).subscribe();
   }
