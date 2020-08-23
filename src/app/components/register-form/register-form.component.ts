@@ -44,32 +44,30 @@ export class RegisterFormComponent {
   }
 
   register(): void{
-    const token = window.localStorage.getItem('token')
-            if(token) {
-                alert('Ya hay una sesión activa actualmente');
-                return;
-            }
-            const newUser = {
-                name: this.name.value,
-                lastname: this.lastname.value,
-                email: this.email.value,
-                password: this.password.value,
-                profile: 'user',
-                image: 'https://cdn0.iconfinder.com/data/icons/user-pictures/100/unknown2-512.png'
-            }
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      alert('Ya hay una sesión activa actualmente');
+      return;
+    }
+    const newUser = {
+      name: this.name.value,
+      lastname: this.lastname.value,
+      email: this.email.value,
+      password: this.password.value,
+      profile: 'user',
+      image: 'https://cdn0.iconfinder.com/data/icons/user-pictures/100/unknown2-512.png'
+    };
 
-            console.log(newUser)
-             
-           /*  const userEmailListDB = await this.$axios.get('users') */ // TODO: validación asincrona
-        
-            /* try {
-               const userCreated = await this.$axios.$post('users', newUser)
-                this.onResetForm();
-                
-                alert('Usuario creado correctamente');
-            } catch {
-               alert('No hemos podido crear su usuario, por favor inténtelo de nuevo.')
-            }; */
+    console.log(newUser);
+    /*  const userEmailListDB = await this.$axios.get('users') */ // TODO: validación asincrona
+
+    /* try {
+        const userCreated = await this.$axios.$post('users', newUser)
+        this.onResetForm();
+        alert('Usuario creado correctamente');
+    } catch {
+        alert('No hemos podido crear su usuario, por favor inténtelo de nuevo.')
+    }; */
   }
 
 }
