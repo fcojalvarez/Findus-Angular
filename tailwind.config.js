@@ -20,7 +20,7 @@ module.exports = {
         },
         minHeight: {
             'screen-90': '90vh',
-            'screen-80': '80vh',
+            'screen-80': '85vh',
         },
         backgroundSize: {
             '40%': '40%',

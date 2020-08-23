@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainFormComponent implements OnInit {
 
-  public forms = ['so','price','display','ram','rom','features'];
-  public titleForm: string[] = ['¿Qué sistema operativo prefiere?','¿Cuál es tu presupuesto máximo?', '¿Tamaño de la pantalla?', '¿Cuánta memoria RAM?', '¿Cuánto almacenamiento interno?', '¿Le interesa alguna característica más?'];
+  public forms = ['so', 'price', 'display', 'ram', 'rom', 'features'];
+  public titleForm: string[] = ['¿Qué sistema operativo prefiere?', '¿Cuál es tu presupuesto máximo?', '¿Tamaño de la pantalla?', '¿Cuánta memoria RAM?', '¿Cuánto almacenamiento interno?', '¿Le interesa alguna característica más?'];
   public labels: any[] = [
     ['Indiferente', 'Android', 'IOS'],
     [650],
-    ['Indiferente', "Menos de 6'", "Más de 6'"],
+    ['Indiferente', 'Menos de 6 pulgadas', 'Más de 6 pulgadas'],
     ['Indiferente', 'Menos de 8GB', 'Más de 8GB'],
     ['Indiferente', 'Menos de 128GB', 'Más de 128GB'],
     ['Sensor de huella', 'Desbloqueo facial', 'Carga inalámbrica', 'Carga rápida', 'Radio FM', 'Dual SIM', 'Jack 3.5mm'],
@@ -38,12 +38,11 @@ export class MainFormComponent implements OnInit {
     features: [],
   };
   public devicesRecomend;
-  public pointAct: number = 1;
+  public pointAct = 1;
 
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

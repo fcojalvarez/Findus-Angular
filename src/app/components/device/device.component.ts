@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-device',
@@ -11,12 +11,10 @@ export class DeviceComponent implements OnInit {
   @Input() selectDevice;    // TODO: crear model device
 
   constructor( route: ActivatedRoute ) {
-    route.params.subscribe( data => this.deviceID = data.id ) 
+    route.params.subscribe( data => this.deviceID = data.id );
   }
 
   ngOnInit(): void {
   }
-
-
 
 }

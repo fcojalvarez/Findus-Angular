@@ -21,6 +21,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { AboutComponent } from './pages/about/about.component';
 import { LegalComponent } from './pages/legal/legal.component';
+import { UserPageComponent } from './pages/user-page/user-page.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { LegalComponent } from './pages/legal/legal.component';
     RegisterFormComponent,
     AboutComponent,
     LegalComponent,
+    UserPageComponent,
   ],
   imports: [
     BrowserModule,

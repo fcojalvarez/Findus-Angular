@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -7,17 +8,17 @@ import { HttpClient } from "@angular/common/http";
 })
 export class DevicesService {
 
-  private url: string = 'https://findusapi.herokuapp.com';
+  private url = 'https://findusapi.herokuapp.com';
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
   }
 
-  getDevices(){
-    return this.http.get(`${this.url}/devices`)
+  getDevices(): Observable<any>{
+    return this.http.get(`${this.url}/devices`);
   }
 
-  getDevicesRandom(){
-    return this.http.get(`${this.url}/devicesAleatory`)
+  getDevicesRandom(): Observable<any> {
+    return this.http.get(`${this.url}/devicesAleatory`);
   }
 
 }

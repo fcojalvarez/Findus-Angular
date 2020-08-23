@@ -9,13 +9,11 @@ export class RandomDevicesComponent implements OnInit {
 
   public devicesRandom;
 
-  constructor(private _DeviceService: DevicesService) { }
+  constructor(private DeviceService: DevicesService) { }
 
   ngOnInit(): void {
-    this._DeviceService.getDevicesRandom().subscribe(data => { this.devicesRandom = data } )
+    this.DeviceService.getDevicesRandom().subscribe(data => { this.devicesRandom = data; } );
 
   }
-
-  
 
 }

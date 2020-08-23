@@ -9,16 +9,16 @@ import { Component } from '@angular/core';
 })
 export class MainNavComponent {
 
-  public showmenu:boolean = false;
+  public showmenu = false;
 
   constructor() {
-    this.checkWidth()
+    this.checkWidth();
   }
 
 
-  checkWidth(){
-    const vp:number = window.innerWidth;
-    if(vp > 640) this.showmenu = true;
+  checkWidth(): void{
+    const widthVieport: number = window.innerWidth;
+    if (widthVieport > 640) { this.showmenu = true; }
   }
 
 }

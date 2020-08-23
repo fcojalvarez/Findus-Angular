@@ -17,9 +17,8 @@ const routes: Routes = [
   { path: 'legal', component: LegalComponent },
   { path: 'about', component: AboutComponent },
   { path: 'devices/:id', component: DevicePageComponent },
-  { path: '', redirectTo: "/home", pathMatch: "full" },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
-  
 ];
 
 @NgModule({

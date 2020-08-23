@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'register-form',
+  selector: 'app-register-form',
   templateUrl: './register-form.component.html',
   styles: [ '.text-shadow{ text-shadow: 1px 1px 2px #333; }'
   ]
@@ -14,36 +14,36 @@ export class RegisterFormComponent {
 
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  constructor( private fb: FormBuilder, private http: HttpClient ) { 
-    this.formRegister = this.createForm()
+  constructor( private fb: FormBuilder, private http: HttpClient ) {
+    this.formRegister = this.createForm();
   }
 
-  get name() { return this.formRegister.get('name'); }
-  get lastname() { return this.formRegister.get('lastname'); }
-  get email() { return this.formRegister.get('email'); }
-  get repeatEmail() { return this.formRegister.get('repeatEmail'); }
-  get password() { return this.formRegister.get('password'); }
-  get repeatPassword() { return this.formRegister.get('repeatPassword'); }
-  get acceptPolicies() { return this.formRegister.get('acceptPolicies'); }
+  get name(): AbstractControl { return this.formRegister.get('name'); }
+  get lastname(): AbstractControl { return this.formRegister.get('lastname'); }
+  get email(): AbstractControl { return this.formRegister.get('email'); }
+  get repeatEmail(): AbstractControl { return this.formRegister.get('repeatEmail'); }
+  get password(): AbstractControl { return this.formRegister.get('password'); }
+  get repeatPassword(): AbstractControl { return this.formRegister.get('repeatPassword'); }
+  get acceptPolicies(): AbstractControl { return this.formRegister.get('acceptPolicies'); }
 
-  createForm(){
+  createForm(): FormGroup{
     return new FormGroup({
       name: new FormControl('', [ Validators.required, Validators.minLength(5) ]),
       lastname: new FormControl('', [ Validators.required, Validators.minLength(5) ]),
-      email: new FormControl('', [ Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern) ], this.userExist),
+      email: new FormControl('', [ Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern) ]),
       repeatEmail: new FormControl('', [ Validators.required, Validators.minLength(5), Validators.pattern(this.emailPattern) ]),
       password: new FormControl('', [ Validators.required, Validators.minLength(6) ]),
       repeatPassword: new FormControl('', [ Validators.required, Validators.minLength(6) ]),
       acceptPolicies: new FormControl('', Validators.required ),
-    })
+    });
   }
 
 
-  onResetForm(){
+  onResetForm(): void{
     this.formRegister.reset();
   }
 
-  register(){
+  register(): void{
     const token = window.localStorage.getItem('token')
             if(token) {
                 alert('Ya hay una sesión activa actualmente');
@@ -70,10 +70,6 @@ export class RegisterFormComponent {
             } catch {
                alert('No hemos podido crear su usuario, por favor inténtelo de nuevo.')
             }; */
-  }
-
-  userExist(){
-    return new Promise( resolve => resolve(true));
   }
 
 }
