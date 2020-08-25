@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-user-page',
@@ -6,11 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class UserPageComponent implements OnInit {
+export class UserPageComponent {
 
-  constructor() { }
+  public userData: {};
+  public isAuth: boolean;
 
-  ngOnInit(): void {
+  constructor( private usersService: UsersService) {
+    this.usersService.checkAuth();
+    this.usersService.getUser();
+    this.userData = this.usersService.userData;
+    console.log(this.userData);
   }
+
 
 }

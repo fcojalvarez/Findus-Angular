@@ -7,6 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { DevicePageComponent } from './pages/device-page/device-page.component';
 import { LegalComponent } from './pages/legal/legal.component';
 import { AboutComponent } from './pages/about/about.component';
+import { UserPageComponent } from './pages/user-page/user-page.component';
 
 
 
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'userpage', component: UserPageComponent },
   { path: 'legal', component: LegalComponent },
   { path: 'about', component: AboutComponent },
   { path: 'devices/:id', component: DevicePageComponent },

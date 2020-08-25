@@ -1,9 +1,16 @@
-<div class="bg-gray-700 sm:flex sm:px-20 md:px-24 xl:px-56">
+<div class="w-full bg-gray-700 md:flex md:px-20 xl:px-56 md:justify-between">
 
-    <a class="sm:w-1/2 sm:my-auto cursor-pointer" [routerLink]="['home']">
-        <img class="w-40 sm:w-24 m-auto sm:ml-0" src="../../../assets/images/Findus_light_larg.png" alt="Findus logo">
+    <a class="md:w-32 md:my-auto cursor-pointer" [routerLink]="['home']">
+        <img class="w-40 md:w-24 m-auto" src="../../../assets/images/Findus_light_larg.png" alt="Findus logo">
     </a>
 
-    <app-main-nav class="sm:w-full"></app-main-nav>
+    <app-main-nav class="mx-auto md:mr-0 md:w-1/2" [isAuth]="isAuth"></app-main-nav>
+
+    <div class="p-4 md:w-32" *ngIf="isAuth && userData">
+        <div class="flex justify-center w-32 pb-2 mx-auto cursor-pointer" [routerLink]="['userpage']">
+            <img class="w-6 rounded-full" [src]="userData.image" alt="avatar user">
+            <p class="text-sm text-white ml-2 font-bold">{{userData.name}}</p>
+        </div>
+    </div>
 
 </div>

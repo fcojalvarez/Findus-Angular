@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-contact',
@@ -30,7 +31,7 @@ export class ContactComponent implements OnInit {
 
   sendMessage( form: FormGroup ): void {
     const message: { fullName: string, email: string, subject: string, message: string} = form.value;
-    this.http.post<any>('https://findusapi.herokuapp.com/contact', message).subscribe();
+    this.http.post<any>(`${environment.url}/contact'`, message).subscribe();
   }
 
 }

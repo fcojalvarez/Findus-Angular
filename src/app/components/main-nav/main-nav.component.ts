@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-nav',
@@ -9,9 +10,10 @@ import { Component } from '@angular/core';
 })
 export class MainNavComponent {
 
+  @Input() isAuth: boolean;
   public showmenu = false;
 
-  constructor() {
+  constructor( private router: Router ) {
     this.checkWidth();
   }
 
@@ -19,6 +21,11 @@ export class MainNavComponent {
   checkWidth(): void{
     const widthVieport: number = window.innerWidth;
     if (widthVieport > 640) { this.showmenu = true; }
+  }
+
+  logout(): void{
+    window.localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 
 }

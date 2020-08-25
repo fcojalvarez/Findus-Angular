@@ -1,55 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { MainNavComponent } from './components/main-nav/main-nav.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { LoginComponent } from './pages/login/login.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { RandomDevicesComponent } from './components/random-devices/random-devices.component';
-import { DeviceComponent } from './components/device/device.component';
-import { DevicePageComponent } from './pages/device-page/device-page.component';
-import { LoaderComponent } from './components/loader/loader.component';
-import { MainFormComponent } from './components/main-form/main-form.component';
-import { LoginFormComponent } from './components/login-form/login-form.component';
-import { RegisterFormComponent } from './components/register-form/register-form.component';
-import { AboutComponent } from './pages/about/about.component';
-import { LegalComponent } from './pages/legal/legal.component';
-import { UserPageComponent } from './pages/user-page/user-page.component';
+import { ComponentsModule } from './components/components.module';
+import { PagesModule } from './pages/pages.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    MainNavComponent,
-    HomeComponent,
-    ContactComponent,
-    LoginComponent,
-    NotFoundComponent,
-    RandomDevicesComponent,
-    DeviceComponent,
-    DevicePageComponent,
-    LoaderComponent,
-    MainFormComponent,
-    LoginFormComponent,
-    RegisterFormComponent,
-    AboutComponent,
-    LegalComponent,
-    UserPageComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    SharedModule,
+    ComponentsModule,
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

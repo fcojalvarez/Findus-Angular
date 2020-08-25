@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 export class DeviceComponent implements OnInit {
 
   public deviceID;
-  @Input() selectDevice;    // TODO: crear model device
+  @Input() selectDevice;
 
   constructor( route: ActivatedRoute ) {
     route.params.subscribe( data => this.deviceID = data.id );
