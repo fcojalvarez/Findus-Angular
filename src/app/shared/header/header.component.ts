@@ -13,7 +13,7 @@ export class HeaderComponent {
   constructor( private usersService: UsersService ) {
     this.usersService.checkAuth();
     this.isAuth = this.usersService.isAuth;
-    this.userData = this.usersService.userData;
+    if (this.isAuth){ this.usersService.getUser().subscribe( (user: any) => this.userData = user); }
   }
 
 }

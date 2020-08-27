@@ -44,7 +44,7 @@ export class LoginFormComponent{
       password: this.password.value
     };
 
-    this.http.post(`${this.url}auth/login`, loginData).subscribe( (data: any) => {
+    this.http.post(`${this.url}/auth/login`, loginData).subscribe( (data: any) => {
       window.localStorage.setItem('token', data.token);
       this.token = data.token;
     });

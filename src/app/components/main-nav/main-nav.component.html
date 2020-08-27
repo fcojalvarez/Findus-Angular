@@ -2,15 +2,15 @@
     <div class="md:hidden text-white text-center pb-4 text-xl" (click)="showmenu = !showmenu">Menú <i class="fas fa-caret-down"></i>
     </div>
 
-    <div *ngIf="showmenu" class="sm:flex justify-end">
+    <div *ngIf="showmenu" class="sm:flex justify-center">
         <li class="w-full sm:w-32 xl:w-28 text-center p-2 sm:p-0 sm:py-2 m-1 sm:m-0">
-            <a class="text-white hover:text-yellow-400 py-2 px-6 sm:py-2" [routerLink]="['home']" routerLinkActive="active">Inicio</a>
+            <a class="text-white hover:text-yellow-400 py-2 px-6 sm:py-2" [routerLink]="['home']" routerLinkActive="active">Home</a>
         </li>
         <li class="w-full sm:w-32 xl:w-28 text-center p-2 sm:p-0 sm:py-2 m-1 sm:m-0">
-            <a class="text-white hover:text-yellow-400 py-2 px-6 sm:py-2" [routerLink]="['contact']" routerLinkActive="active">Contacto</a>
+            <a class="text-white hover:text-yellow-400 py-2 px-6 sm:py-2" [routerLink]="['contact']" routerLinkActive="active">Contact</a>
         </li>
         <li class="w-full sm:w-40 xl:w-28 text-center p-2 sm:p-0 sm:py-2 m-1 sm:m-0" *ngIf="isAuth else isNotAuth">
-            <a class="text-white hover:text-yellow-400 py-2 px-6 sm:py-2 cursor-pointer" (click)="logout()" routerLinkActive="active">Cerrar sesión</a>
+            <a class="text-white hover:text-yellow-400 py-2 px-6 sm:py-2 cursor-pointer" (click)="logout()" routerLinkActive="active">Logout</a>
         </li>
 
         <ng-template #isNotAuth>

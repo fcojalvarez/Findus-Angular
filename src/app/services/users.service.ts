@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,8 @@ import { environment } from '../../environments/environment';
 export class UsersService {
 
   public isAuth: boolean;
-  public userData: object;
+  public tokenDecoded: any;
   private token: string;
-  private tokenDecoded: any;
   private url = environment.url;
 
   constructor( private http: HttpClient ) {
@@ -19,7 +19,19 @@ export class UsersService {
    }
 
   getUsers(): any{
-    return this.http.get(`${this.url}/users`).subscribe( users => users );
+    return this.http.get(`${this.url}/users`);
+  }
+
+  getUser(): Observable<any>{
+    if (this.tokenDecoded) {
+      const userID = this.tokenDecoded.id;
+      return this.http.get(`${this.url}/users/${userID}`, {
+        headers: {
+          Authorization: `Bearer ${this.token}`
+        }
+      });
+    }
+    return;
   }
 
   checkAuth(): boolean {
@@ -33,10 +45,4 @@ export class UsersService {
     this.isAuth = false;
     return;
   }
-
-getUser(): any{
-  // tslint:disable-next-line: max-line-length
-  return this.http.get(`${this.url}/users/${this.tokenDecoded.id}`, { headers: { Authorization: `Bearer ${this.token}` } }).subscribe(user => user);
-}
-
 }

@@ -1,22 +1,22 @@
-<div class="bg-white border-2 border-yellow-400 rounded w-11/12 my-4 mx-auto py-4 px-6 md:w-1/2">
-    <div class="md:flex" *ngIf="userData">
-        <img class="w-64 shadow-lg rounded mb-4 md:mb-0" [src]="userData.image" alt="Imagen de usuario">
-        <div class="md:ml-12">
-            <h3 class="text-xl text-gray-800">Nombre</h3><span class="spanUserData">{{userData.name}}</span>
-            <h3 class="text-xl text-gray-800">Apellidos</h3><span class="spanUserData">{{userData.lastname}}</span>
-            <h3 class="text-xl text-gray-800">email</h3><span class="spanUserData">{{userData.email}}</span>
+<div class="bg-white border-2 border-yellow-400 rounded w-11/12 my-4 mx-auto py-4 px-6 md:w-3/4 lg:w-1/2">
+    <div class="sm:flex md:mx-auto" *ngIf="userData">
+        <img class="w-64 md:w-48 mx-auto shadow-lg border border-gray-600 rounded-lg mb-4 md:mb-0" [src]="userData.image" alt="Imagen de usuario">
+        <div class="mx-auto w-64 md:ml-12">
+            <h3 class="text-xl text-gray-800">Nombre</h3><span class="ml-8 sm:m-0">{{userData.name}}</span>
+            <h3 class="text-xl text-gray-800">Apellidos</h3><span class="ml-8 sm:m-0">{{userData.surname}}</span>
+            <h3 class="text-xl text-gray-800">email</h3><span class="ml-8 sm:m-0">{{userData.email}}</span>
         </div>
     </div>
 
-    <div class="my-8">
-        <button class="px-8 py-2 my-2 rounded-lg w-full border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 block">Modificar datos</button>
-        <button class="px-8 py-2 my-2 rounded-lg w-full border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 block">Modificar contraseña</button>
-        <button class="px-8 py-2 my-2 rounded-lg w-full border border-gray-400 bg-red-200 text-red-700 hover:bg-red-800 hover:text-white  block">Eliminar cuenta</button>
+    <div class="my-4 md:flex justify-between">
+        <button class="px-4 py-2 my-2 rounded-lg w-full md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none" (click)="editUserData()">Modificar datos</button>
+        <button class="px-4 py-2 my-2 rounded-lg w-full md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none" (click)="editPassword()">Modificar contraseña</button>
+        <button class="px-4 py-2 my-2 rounded-lg w-full md:w-auto border border-gray-400 bg-red-200 text-red-700 hover:bg-red-800 hover:text-white focus:outline-none" (click)="deleteUser()">Eliminar cuenta</button>
     </div>
 
-    <div class="my-8">
-        <button class="px-8 py-2 my-2 rounded-lg w-full border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 block">Mis comentarios</button>
-        <button class="px-8 py-2 my-2 rounded-lg w-full border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 block">Móviles favoritos</button>
+    <div class="my-4 md:flex justify-evenly">
+        <button class="px-4 py-2 my-2 rounded-lg w-full md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none" (click)="showComments()">Mis comentarios</button>
+        <button class="px-4 py-2 my-2 rounded-lg w-full md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none" (click)="showFavsDevices()">Móviles favoritos</button>
     </div>
 
     <!-- <el-row class="divButtons">
