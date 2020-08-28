@@ -6,7 +6,7 @@
 
     <app-main-nav class="mx-auto md:mr-0 lg:w-1/2 my-auto" [isAuth]="isAuth"></app-main-nav>
 
-    <div class="p-4 md:w-32" *ngIf="isAuth && userData">
+    <div class="p-4 md:w-38" *ngIf="isAuth && userData">
         <div class="flex justify-center mx-auto cursor-pointer focus:outline-none" [routerLink]="['userpage']">
             <img class="w-6 rounded-full" [src]="userData.image" alt="avatar user">
             <p class="text-sm text-white ml-2">{{userData.name}}</p>

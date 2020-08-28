@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,16 @@ export class UsersService {
   private token: string;
   private url = environment.url;
 
-  constructor( private http: HttpClient ) {
+  constructor( private http: HttpClient, afsAuth: AngularFireAuth ) {
     this.checkAuth();
    }
+
+  login(userData): void{
+    this.http.post(`${this.url}/auth/login`, userData).subscribe( (data: any) => {
+      window.localStorage.setItem('token', data.token);
+      this.token = data.token;
+    });
+  }
 
   getUsers(): any{
     return this.http.get(`${this.url}/users`);
@@ -53,11 +61,26 @@ export class UsersService {
 
   changePassword(user): Observable<any>{
     try{
-      const changePassword = this.http.post('auth/resetPassword', user.email);
-      console.log('Se ha enviado la petición, recibirá un correo con las instrucciones.');
+      const changePassword = this.http.post(`${this.url}/auth/resetPassword`, { email: user.email });
+      alert('Se ha enviado la petición, recibirá un correo con las instrucciones.');
       return changePassword;
     } catch (err) {
       alert('No se ha podido enviar la petición para cambiar la contraseña, por favor vuelva a intentarlo más tarde.');
+    }
+  }
+
+  deleteAccount(user): Observable<any>{
+    try{
+      const deletedUser = this.http.delete(`${this.url}users/${this.tokenDecoded._id}`, {
+        headers: {
+            Authorization: `Bearer ${this.token}`
+        }
+      });
+      alert('El usuario ha sido eliminado.');
+      // Añadir aquí la función logout
+      return deletedUser;
+    } catch (err) {
+      alert('No hemos podido eliminar el usuario. Por favor, inténtelo de nuevo már tarde.');
     }
   }
 

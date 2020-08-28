@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-login-form',
@@ -19,7 +20,7 @@ export class LoginFormComponent{
   private url = environment.url;
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  constructor( private fb: FormBuilder, private http: HttpClient, private router: Router ) {
+  constructor( private fb: FormBuilder, private http: HttpClient, private router: Router, private usersService: UsersService ) {
     this.formLogin = this.createForm();
   }
 
@@ -38,16 +39,8 @@ export class LoginFormComponent{
     this.formLogin.reset();
   }
 
-  login(): void{
-    const loginData = {
-      email: this.email.value,
-      password: this.password.value
-    };
-
-    this.http.post(`${this.url}/auth/login`, loginData).subscribe( (data: any) => {
-      window.localStorage.setItem('token', data.token);
-      this.token = data.token;
-    });
+  login(userData): void{
+    this.usersService.login(userData);
     this.onResetForm();
     this.router.navigate(['/']);
   }

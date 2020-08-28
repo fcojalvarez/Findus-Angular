@@ -60,11 +60,11 @@ export class UserPageComponent implements OnInit {
   }
 
   editPassword(): void{
-    this.usersService.changePassword(this.userData).subscribe()
+    this.usersService.changePassword(this.userData).subscribe();
   }
 
-  deleteUser(){
-    console.log('delete user');
+  deleteUser(): void{
+    this.usersService.deleteAccount(this.userData).subscribe();
   }
 
   showFavsDevices(){

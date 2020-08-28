@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  url: 'https://findusapi.herokuapp.com'
+  url: 'https://findusapi.herokuapp.com',
+  firebaseConfig : {
+    apiKey: 'AIzaSyCukEmUJxhEr-POEaNfvTVmSWNFYApBdPY',
+    authDomain: 'findus-612bc.firebaseapp.com',
+    databaseURL: 'https://findus-612bc.firebaseio.com',
+    projectId: 'findus-612bc',
+    storageBucket: 'findus-612bc.appspot.com',
+    messagingSenderId: '991806799248',
+    appId: '1:991806799248:web:2a684fe758e057c3ee4715'
+  }
 };
 
 /*
