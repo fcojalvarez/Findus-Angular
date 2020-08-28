@@ -2,7 +2,7 @@
 
 > Find your smartphone.
 
- ##### > > <a href="#" >Taste me (is not finish)</a> < <
+ ##### > > <a href="https://findus-angular.web.app/login" >Taste me (is not finish)</a> < <
 
 Findus allows you to find a device based on your needs.
 With a simple questionnaire, you can determine your needs and recommend a smartphone.
