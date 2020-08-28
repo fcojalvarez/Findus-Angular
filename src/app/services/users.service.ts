@@ -4,6 +4,7 @@ import * as jwt_decode from 'jwt-decode';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class UsersService {
   private token: string;
   private url = environment.url;
 
-  constructor( private http: HttpClient, afsAuth: AngularFireAuth ) {
+  constructor( private http: HttpClient, afsAuth: AngularFireAuth, private router: Router ) {
     this.checkAuth();
    }
 
@@ -69,15 +70,17 @@ export class UsersService {
     }
   }
 
-  deleteAccount(user): Observable<any>{
+  deleteAccount(): Observable<any>{
+    const userId = this.tokenDecoded.id;
+    console.log(userId);
     try{
-      const deletedUser = this.http.delete(`${this.url}users/${this.tokenDecoded._id}`, {
+      const deletedUser = this.http.delete(`${this.url}/users/${userId}`, {
         headers: {
             Authorization: `Bearer ${this.token}`
         }
       });
-      alert('El usuario ha sido eliminado.');
-      // Añadir aquí la función logout
+      alert('El usuario ha sido eliminado correctamente.');
+      this.logout();
       return deletedUser;
     } catch (err) {
       alert('No hemos podido eliminar el usuario. Por favor, inténtelo de nuevo már tarde.');
@@ -94,5 +97,10 @@ export class UsersService {
     }
     this.isAuth = false;
     return;
+  }
+
+  logout(): void{
+    window.localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 }

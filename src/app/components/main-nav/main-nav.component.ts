@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -13,7 +13,7 @@ export class MainNavComponent {
   @Input() isAuth: boolean;
   public showmenu = false;
 
-  constructor( private router: Router ) {
+  constructor( private usersService: UsersService ) {
     this.checkWidth();
   }
 
@@ -24,8 +24,7 @@ export class MainNavComponent {
   }
 
   logout(): void{
-    window.localStorage.removeItem('token');
-    this.router.navigate(['/']);
+    this.usersService.logout();
   }
 
 }

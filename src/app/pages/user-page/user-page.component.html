@@ -12,12 +12,7 @@
         <div class="my-4 grid grid-cols-1 md:grid-cols-3 gap-4 ">
             <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none " (click)="showFormEditUser() ">Modificar datos</button>
             <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none " (click)="editPassword() ">Modificar contraseña</button>
-            <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-red-200 text-red-700 hover:bg-red-800 hover:text-white focus:outline-none " (click)="deleteUser() ">Eliminar cuenta</button>
-        </div>
-
-        <div class="my-4 grid grid-cols-1 md:grid-cols-3 gap-4 ">
-            <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none " (click)="showComments() ">Mis comentarios</button>
-            <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none " (click)="showFavsDevices() ">Móviles favoritos</button>
+            <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-red-200 text-red-700 hover:bg-red-800 hover:text-white focus:outline-none " (click)="showWarningMessage() ">Eliminar cuenta</button>
         </div>
 
         <div *ngIf="isShowFormUserData">
@@ -49,9 +44,25 @@
                         <p *ngIf="!image.value" class="text-red-500 text-xs italic">Este campo es obligatorio.</p>
                     </div>
                 </div>
-                <button class="px-8 py-2 bg-green-200 text-gray-800 font-semibold border border-green-400 rounded hover:text-green-600 hover:bg-gray-300 focus:outline-none" type="submit">Editar</button>
-                <button class="ml-8 px-8 py-2 bg-red-200 text-gray-800 font-semibold border border-red-400 rounded hover:text-red-600 hover:bg-gray-300 focus:outline-none" type="button" (click)="discardChanges()">Cancelar</button>
+                <div class="my-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button class="px-8 py-2 my-2 sm:my-0 w-full sm:w-48 rounded bg-green-600 text-white hover:bg-green-800 focus:outline-none" type="submit ">Editar</button>
+                    <button class="px-8 py-2 my-2 sm:my-0 sm:mr-2 w-full sm:w-48 rounded bg-red-600 text-white hover:bg-red-800 focus:outline-none" type="button " (click)="discardChanges() ">Cancelar</button>
+                </div>
             </form>
         </div>
+
+        <div *ngIf="isShowWarningMessage ">
+            <p>Este proceso no se puede revertir, ¿Seguro que quiere <span class="text-red-700 ">eliminar su cuenta</span>?</p>
+            <div class="sm:flex sm:justify-evenly my-2 ">
+                <button class="px-8 py-2 my-2 sm:my-0 sm:mr-2 w-full sm:w-48 rounded bg-red-600 text-white hover:bg-red-800 focus:outline-none" (click)="deleteUser() ">Eliminar cuenta</button>
+                <button class="px-8 py-2 my-2 sm:my-0 w-full sm:w-48 rounded bg-green-600 text-white hover:bg-green-800 focus:outline-none" (click)="cancelDeleteUser() ">Cancelar</button>
+            </div>
+        </div>
+
+        <div class="my-4 grid grid-cols-1 md:grid-cols-3 gap-4 ">
+            <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none " (click)="showComments() ">Mis comentarios</button>
+            <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none " (click)="showFavsDevices() ">Móviles favoritos</button>
+        </div>
+
     </div>
 </div>

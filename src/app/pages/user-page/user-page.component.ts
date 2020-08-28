@@ -13,6 +13,7 @@ export class UserPageComponent implements OnInit {
   public userData: any;
   public isAuth: boolean;
   public isShowFormUserData = false;
+  public isShowWarningMessage = false;
   public formEditUserData: FormGroup;
 
   private users: any[];
@@ -63,8 +64,15 @@ export class UserPageComponent implements OnInit {
     this.usersService.changePassword(this.userData).subscribe();
   }
 
+  showWarningMessage(): void{
+    this.isShowWarningMessage = !this.isShowWarningMessage;
+  }
+  cancelDeleteUser(): void{
+    this.isShowWarningMessage = false;
+  }
+
   deleteUser(): void{
-    this.usersService.deleteAccount(this.userData).subscribe();
+    this.usersService.deleteAccount().subscribe();
   }
 
   showFavsDevices(){
