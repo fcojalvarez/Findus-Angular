@@ -1,93 +1,57 @@
-<div class="bg-white border-2 border-yellow-400 rounded w-11/12 my-4 mx-auto py-4 px-6 md:w-3/4 lg:w-1/2">
-    <div class="sm:flex md:mx-auto" *ngIf="userData">
-        <img class="w-64 md:w-48 mx-auto shadow-lg border border-gray-600 rounded-lg mb-4 md:mb-0" [src]="userData.image" alt="Imagen de usuario">
-        <div class="mx-auto w-64 md:ml-12">
-            <h3 class="text-xl text-gray-800">Nombre</h3><span class="ml-8 sm:m-0">{{userData.name}}</span>
-            <h3 class="text-xl text-gray-800">Apellidos</h3><span class="ml-8 sm:m-0">{{userData.surname}}</span>
-            <h3 class="text-xl text-gray-800">email</h3><span class="ml-8 sm:m-0">{{userData.email}}</span>
+<div class="min-h-screen-80">
+    <div class="bg-white border-2 border-yellow-400 rounded-lg w-11/12 my-4 md:mt-40 mb-10 mx-auto py-4 px-6 md:w-3/4 max-w-fixed2">
+        <div class=" sm:flex md:mx-auto " *ngIf="userData ">
+            <img class="w-64 md:w-48 mx-auto shadow-lg border border-gray-600 rounded-lg mb-4 md:mb-0 " [src]="userData.image " alt="Imagen de usuario ">
+            <div class="mx-auto w-64 md:ml-12 ">
+                <h3 class="text-xl text-gray-800 ">Nombre</h3><span class="ml-8 sm:m-0 ">{{userData.name}}</span>
+                <h3 class="text-xl text-gray-800 ">Apellidos</h3><span class="ml-8 sm:m-0 ">{{userData.surname}}</span>
+                <h3 class="text-xl text-gray-800 ">email</h3><span class="ml-8 sm:m-0 ">{{userData.email}}</span>
+            </div>
         </div>
-    </div>
 
-    <div class="my-4 md:flex justify-between">
-        <button class="px-4 py-2 my-2 rounded-lg w-full md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none" (click)="editUserData()">Modificar datos</button>
-        <button class="px-4 py-2 my-2 rounded-lg w-full md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none" (click)="editPassword()">Modificar contraseña</button>
-        <button class="px-4 py-2 my-2 rounded-lg w-full md:w-auto border border-gray-400 bg-red-200 text-red-700 hover:bg-red-800 hover:text-white focus:outline-none" (click)="deleteUser()">Eliminar cuenta</button>
-    </div>
-
-    <div class="my-4 md:flex justify-evenly">
-        <button class="px-4 py-2 my-2 rounded-lg w-full md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none" (click)="showComments()">Mis comentarios</button>
-        <button class="px-4 py-2 my-2 rounded-lg w-full md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none" (click)="showFavsDevices()">Móviles favoritos</button>
-    </div>
-
-    <!-- <el-row class="divButtons">
-            <el-col :xs="22" :m="10">
-                <el-button round class="btnUserPage marginL0" @click.prevent="showFormEdit">Modificar datos</el-button>
-            </el-col>
-            <el-col :xs="22" :m="10">
-                <el-button round class="btnUserPage marginL0" @click.prevent="changePassword">Modificar contraseña</el-button>
-            </el-col>
-            <el-col :xs="22" :m="10">
-                <el-button round class="btnUserPage marginL0 btnDeleteUser" @click.prevent="warningDeleteUser">Eliminar cuenta</el-button>
-            </el-col>
-        </el-row>
-
-        <el-form v-show="isFormModData" :label-position="labelPosition" label-width="100px" class="formModData">
-            <h3 class="titleForm">Modificar datos personales:</h3>
-            <el-form-item label="Nombre">
-                <el-input v-model="currentUser.name"></el-input>
-            </el-form-item>
-            <el-form-item label="Apellidos">
-                <el-input v-model="currentUser.surname"></el-input>
-            </el-form-item>
-            <el-form-item label="Email">
-                <el-input v-model="currentUser.email"></el-input>
-            </el-form-item>
-            <el-form-item label="Imagen">
-                <el-input v-model="currentUser.image"></el-input>
-                <span class="spanUserData msgAlert">Para modificar la imagen de usuario deberá insertar una url.</span>
-            </el-form-item>
-            <el-button round type="primary" class="btnEditData" @click.prevent="changePersonalInfo">Modificar</el-button>
-        </el-form>
-
-        <div v-show="isDeletedAccount" class="warningDeleteUser">
-            <span>¿Está seguro que quiere eliminar su cuenta?</span>
-            <br>
-            <el-button round class="btnDeleteUser deleteUser" @click="deleteUserAccount">Confirmar</el-button>
-            <el-button round type="success notDeleteUser" plain @click="showWarningDelete">Cancelar</el-button>
+        <div class="my-4 grid grid-cols-1 md:grid-cols-3 gap-4 ">
+            <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none " (click)="showFormEditUser() ">Modificar datos</button>
+            <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none " (click)="editPassword() ">Modificar contraseña</button>
+            <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-red-200 text-red-700 hover:bg-red-800 hover:text-white focus:outline-none " (click)="deleteUser() ">Eliminar cuenta</button>
         </div>
-        <el-row class="divButtons">
-            <el-col :xs="22" :sm="10">
-                <el-button round class="btnUserPage marginL0" @click.prevent="showComments">Mis comentarios</el-button>
-            </el-col>
-            <el-col :xs="22" :sm="10">
-                <el-button round class="btnUserPage marginL0" @click.prevent="showDevicesFavourites">Móviles favoritos</el-button>
-            </el-col>
-            <el-col :xs="22" :sm="10">
-            </el-col>
-        </el-row>
 
-        <div class="comments" v-show="isShowComments">
-            <h3 class="notComments" v-show="commentsUser.length === 0">No ha comentado en ningún dispositivo.</h3>
-            <div class="" v-if="commentsUser.length > 0">
-                <h3 class="comments">Comentarios:</h3>
-                <div class="divComment" v-for="comment in commentsUser" :key=comment._id>
-                    <h4 class="userComment">{{comment.userCreate}} </h4>
-                    <span class="bodyComment">{{comment.body}}</span>
-                    <div class="footerComment">
-                        <span class="creationDate">Fecha de creación: {{comment.creationDate}}</span>
+        <div class="my-4 grid grid-cols-1 md:grid-cols-3 gap-4 ">
+            <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none " (click)="showComments() ">Mis comentarios</button>
+            <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none " (click)="showFavsDevices() ">Móviles favoritos</button>
+        </div>
+
+        <div *ngIf="isShowFormUserData">
+            <form class="w-full max-w-lg" [formGroup]="formEditUserData" (submit)="sendChangesUserData(formEditUserData.value)">
+                <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                      Nombre
+                    </label>
+                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" [ngClass]="{ 'border-red-500' : !name.value}" id="grid-first-name" type="text" placeholder="nombre" formControlName="name">
+                        <p *ngIf="!name.value" class="text-red-500 text-xs italic">Este campo es obligatorio.</p>
                     </div>
-                    <nuxt-link :to="'/devices/'+comment.smartphoneID">
-                        <el-button class="linkShowComment" size="mini" type="info" round>Ver comentario</el-button>
-                    </nuxt-link>
-                    <hr class="separador">
+                    <div class="w-full md:w-1/2 px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                      Apellidos
+                    </label>
+                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" [ngClass]="{ 'border-red-500' : !surname.value}" type="text"
+                            placeholder="Apellidos" formControlName="surname">
+                        <p *ngIf="!surname.value" class="text-red-500 text-xs italic">Este campo es obligatorio.</p>
+                    </div>
                 </div>
-            </div>
+                <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                      Imagen
+                    </label>
+                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" [ngClass]="{ 'border-red-500' : !image.value}" id="grid-last-name" type="text" placeholder="Url de imagen de usuario"
+                            formControlName="image">
+                        <p *ngIf="!image.value" class="text-red-500 text-xs italic">Este campo es obligatorio.</p>
+                    </div>
+                </div>
+                <button class="px-8 py-2 bg-green-200 text-gray-800 font-semibold border border-green-400 rounded hover:text-green-600 hover:bg-gray-300 focus:outline-none" type="submit">Editar</button>
+                <button class="ml-8 px-8 py-2 bg-red-200 text-gray-800 font-semibold border border-red-400 rounded hover:text-red-600 hover:bg-gray-300 focus:outline-none" type="button" (click)="discardChanges()">Cancelar</button>
+            </form>
         </div>
-
-        <div class="comments" v-show="isShowDevicesFavourites">
-            <h3 class="notComments" v-show="devicesFavouriteUsers.length === 0">No ha añadido ningún dispositivo como favorito.</h3>
-            <div v-for="devices in devicesFavouriteUsers" :key="devices._id">
-                <Device :id="devices._id"></Device>
-            </div>
-        </div> -->
+    </div>
 </div>

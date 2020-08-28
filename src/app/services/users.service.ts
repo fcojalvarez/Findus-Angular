@@ -11,6 +11,7 @@ export class UsersService {
 
   public isAuth: boolean;
   public tokenDecoded: any;
+
   private token: string;
   private url = environment.url;
 
@@ -24,14 +25,40 @@ export class UsersService {
 
   getUser(): Observable<any>{
     if (this.tokenDecoded) {
-      const userID = this.tokenDecoded.id;
-      return this.http.get(`${this.url}/users/${userID}`, {
-        headers: {
-          Authorization: `Bearer ${this.token}`
-        }
-      });
+      try{
+        const userID = this.tokenDecoded.id;
+        return this.http.get(`${this.url}/users/${userID}`, {
+            headers: {
+                Authorization: `Bearer ${this.token}`
+            }
+        });
+      } catch {
+        alert('Ha habido un error al obtener el usuario.');
+      }
     }
     return;
+  }
+
+  editUser(userEdited): Observable<any>{
+    try{
+      return this.http.put(`${this.url}/users/${this.tokenDecoded.id}`, userEdited, {
+        headers: {
+            Authorization: `Bearer ${this.token}`
+        }
+      });
+    } catch {
+      alert('No se ha podido actualizar el usuario');
+    }
+  }
+
+  changePassword(user): Observable<any>{
+    try{
+      const changePassword = this.http.post('auth/resetPassword', user.email);
+      console.log('Se ha enviado la petición, recibirá un correo con las instrucciones.');
+      return changePassword;
+    } catch (err) {
+      alert('No se ha podido enviar la petición para cambiar la contraseña, por favor vuelva a intentarlo más tarde.');
+    }
   }
 
   checkAuth(): boolean {

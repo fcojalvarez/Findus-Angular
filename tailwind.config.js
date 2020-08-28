@@ -16,7 +16,8 @@ module.exports = {
             'full': '100%',
         },
         maxWidth: {
-            'fixed1': '500px'
+            'fixed1': '500px',
+            'fixed2': '640px'
         },
         minHeight: {
             'screen-90': '90vh',
