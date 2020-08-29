@@ -22,4 +22,11 @@ export class DevicesService {
     return this.http.get(`${this.url}/devicesAleatory`);
   }
 
+  getFavsDevices(userID): Observable<any>{
+    const token = localStorage.getItem('token');
+    return this.http.get(`${this.url}/users/${userID}/getDevicesFavorites`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+  }
+
 }

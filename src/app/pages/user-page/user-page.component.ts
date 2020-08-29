@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { DevicesService } from '../../services/devices.service';
 
 @Component({
   selector: 'app-user-page',
@@ -8,18 +9,20 @@ import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from
   styles: [
   ]
 })
-export class UserPageComponent implements OnInit {
+export class UserPageComponent {
 
   public userData: any;
+  public favsDevices: any[];
   public isAuth: boolean;
   public isShowFormUserData = false;
   public isShowWarningMessage = false;
+  public isShowFavoriteDevices = false;
   public formEditUserData: FormGroup;
 
   private users: any[];
 
 
-  constructor( private usersService: UsersService, private fb: FormBuilder) {
+  constructor( private usersService: UsersService, private devicesService: DevicesService , private fb: FormBuilder) {
     this.usersService.checkAuth();
     this.usersService.getUser().subscribe( (user): any => this.userData = user );
   }
@@ -36,9 +39,6 @@ export class UserPageComponent implements OnInit {
       email:    new FormControl(user.email, [Validators.required, Validators.minLength(8)]),
       image:    new FormControl(user.image, [Validators.required, Validators.minLength(10)])
     });
-  }
-
-  ngOnInit(): void {
   }
 
   showFormEditUser(): void{
@@ -75,13 +75,16 @@ export class UserPageComponent implements OnInit {
     this.usersService.deleteAccount().subscribe();
   }
 
-  showFavsDevices(){
-    console.log('show devices favs');
+  showFavsDevices(): void{
+    console.log(this.favsDevices);
+    this.isShowFavoriteDevices = !this.isShowFavoriteDevices;
+    if (this.favsDevices !== undefined){
+      this.devicesService.getFavsDevices(this.userData._id).subscribe(data => this.favsDevices = data );
+    }
   }
 
-
-  showComments(){
-    console.log('show comments');
+  showComments(): void{
+    console.log(this.favsDevices);
   }
 
 }
