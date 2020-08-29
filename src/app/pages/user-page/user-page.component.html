@@ -64,11 +64,29 @@
             <button class="px-4 py-2 my-2 rounded-lg md:w-auto border border-gray-400 bg-yellow-200 text-gray-700 hover:bg-gray-800 hover:text-yellow-500 focus:outline-none " (click)="showFavsDevices() ">Móviles favoritos</button>
         </div>
 
-        <div></div>
+        <div *ngIf="isShowComments">
+            <div *ngIf="commentsUser">
+                <h3 class=" font-semibold text-gray-900 mb-4 ">Comentarios:</h3>
+                <div *ngFor="let comment of commentsUser ">
+                    <h4 class="font-semibold text-gray-800 mb-1 ">{{comment.userCreate}}</h4>
+                    <p class="my-3 ">{{comment.body}}</p>
 
-        <div *ngIf="isShowFavoriteDevices">
-            <app-device *ngFor="let device of favsDevices" [selectDevice]="device"></app-device>
-            <p *ngIf="!favsDevices" class="text-gray-800 h-24 flex items-center justify-center">Aún no ha añadido ningún dispositivo como favorito.</p>
+                    <div class="my-2 sm:flex sm:justify-between ">
+                        <h4 class="text-xs text-gray-800 ">
+                            Fecha de creación:
+                            <span class="font-bold ">{{comment.creationDate}}</span>
+                        </h4>
+                        <a class="px-3 block mt-2 sm:mt-0 text-center bg-yellow-300 rounded-lg " [routerLink]="[ '/devices', comment.smartphoneID] ">Ver comentario</a>
+                    </div>
+                    <hr class="my-4 border-yellow-200 ">
+                </div>
+            </div>
+            <p *ngIf="!commentsUser " class="text-gray-800 h-24 flex items-center justify-center ">Aún no ha comentado en ningún dispositivo.</p>
+        </div>
+
+        <div *ngIf="isShowFavoriteDevices ">
+            <app-device *ngFor="let device of favsDevices " [selectDevice]="device "></app-device>
+            <p *ngIf="!favsDevices " class="text-gray-800 h-24 flex items-center justify-center ">Aún no ha añadido ningún dispositivo como favorito.</p>
         </div>
 
     </div>

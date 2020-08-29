@@ -103,4 +103,8 @@ export class UsersService {
     window.localStorage.removeItem('token');
     this.router.navigate(['/']);
   }
+
+  getComments(): Observable<any>{
+    return this.http.get(`${this.url}/comments`);
+  }
 }

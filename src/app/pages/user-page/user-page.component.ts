@@ -13,10 +13,12 @@ export class UserPageComponent {
 
   public userData: any;
   public favsDevices: any[];
+  public commentsUser: any[];
   public isAuth: boolean;
   public isShowFormUserData = false;
   public isShowWarningMessage = false;
   public isShowFavoriteDevices = false;
+  public isShowComments = false;
   public formEditUserData: FormGroup;
 
   private users: any[];
@@ -76,7 +78,6 @@ export class UserPageComponent {
   }
 
   showFavsDevices(): void{
-    console.log(this.favsDevices);
     this.isShowFavoriteDevices = !this.isShowFavoriteDevices;
     if (this.favsDevices !== undefined){
       this.devicesService.getFavsDevices(this.userData._id).subscribe(data => this.favsDevices = data );
@@ -84,7 +85,11 @@ export class UserPageComponent {
   }
 
   showComments(): void{
-    console.log(this.favsDevices);
+    this.isShowComments = !this.isShowComments;
+    this.usersService.getComments().subscribe( (comments: any[]) => {
+      this.commentsUser = comments.filter( comment => comment.userCreateID === this.userData._id);
+    });
   }
 
 }
+
