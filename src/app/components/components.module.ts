@@ -12,7 +12,6 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoaderComponent } from './loader/loader.component';
 import { AppRoutingModule } from '../app-routing.module';
 
-
 @NgModule({
   declarations: [
     MainNavComponent,
@@ -21,7 +20,7 @@ import { AppRoutingModule } from '../app-routing.module';
     MainFormComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   exports: [
     MainNavComponent,

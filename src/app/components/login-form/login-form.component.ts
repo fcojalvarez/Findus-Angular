@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
-import { UsersService } from '../../services/users.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -20,7 +20,8 @@ export class LoginFormComponent{
   private url = environment.url;
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  constructor( private fb: FormBuilder, private http: HttpClient, private router: Router, private usersService: UsersService ) {
+
+  constructor( private fb: FormBuilder, private http: HttpClient, private router: Router, private athService: AuthService ) {
     this.formLogin = this.createForm();
   }
 
@@ -40,7 +41,7 @@ export class LoginFormComponent{
   }
 
   login(userData): void{
-    this.usersService.login(userData);
+    this.athService.login(userData);
     this.onResetForm();
     this.router.navigate(['/']);
   }

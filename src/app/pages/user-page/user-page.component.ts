@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { DevicesService } from '../../services/devices.service';
+import { AuthService } from '../../services/auth.service';
+import { CommentsService } from '../../services/comments.service';
 
 @Component({
   selector: 'app-user-page',
@@ -24,8 +26,9 @@ export class UserPageComponent {
   private users: any[];
 
 
-  constructor( private usersService: UsersService, private devicesService: DevicesService , private fb: FormBuilder) {
-    this.usersService.checkAuth();
+  // tslint:disable-next-line: max-line-length
+  constructor( private usersService: UsersService, private athService: AuthService, private devicesService: DevicesService, private commentsService: CommentsService) {
+    this.athService.checkAuth();
     this.usersService.getUser().subscribe( (user): any => this.userData = user );
   }
 
@@ -52,6 +55,7 @@ export class UserPageComponent {
     try {
         this.usersService.editUser(userEdited).subscribe();
         this.isShowFormUserData = false;
+        this.usersService.getUser().subscribe( (user): any => console.log(user) );
     } catch (err) {
         alert('Ha habido un error al actualizar los datos del usuario.');
     }
@@ -79,14 +83,13 @@ export class UserPageComponent {
 
   showFavsDevices(): void{
     this.isShowFavoriteDevices = !this.isShowFavoriteDevices;
-    if (this.favsDevices !== undefined){
-      this.devicesService.getFavsDevices(this.userData._id).subscribe(data => this.favsDevices = data );
-    }
+    this.devicesService.getFavsDevices(this.userData._id).subscribe(data => this.favsDevices = data );
+
   }
 
   showComments(): void{
     this.isShowComments = !this.isShowComments;
-    this.usersService.getComments().subscribe( (comments: any[]) => {
+    this.commentsService.getComments().subscribe( (comments: any[]) => {
       this.commentsUser = comments.filter( comment => comment.userCreateID === this.userData._id);
     });
   }

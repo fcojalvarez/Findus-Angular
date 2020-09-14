@@ -12,6 +12,8 @@ import { AboutComponent } from './about/about.component';
 import { LegalComponent } from './legal/legal.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { RegisterComponent } from './register/register.component';
+import { CommentsComponent } from '../components/comments/comments.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { AppRoutingModule } from '../app-routing.module';
     DevicePageComponent,
     AboutComponent,
     LegalComponent,
-    UserPageComponent
+    UserPageComponent,
+    RegisterComponent,
+    CommentsComponent
   ],
   imports: [
     CommonModule,

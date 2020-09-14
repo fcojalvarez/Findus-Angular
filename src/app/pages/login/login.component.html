@@ -1,12 +1,7 @@
 <div class="min-h-screen-80 mt-16 my-12 flex flex-col items-center justify-center">
 
-    <app-login-form *ngIf="isShowLoginForm else showRegisterForm" class="sm:w-1/2 lg:w-2/5 xl:w-1/3 xl:max-w-fixed1"></app-login-form>
+    <app-login-form class="sm:w-1/2 lg:w-2/5 xl:w-1/3 xl:max-w-fixed1"></app-login-form>
 
-    <p *ngIf="isShowLoginForm" class="text-center text-sm text-gray-800 mt-6">¿No está registrado? <span class="font-bold border-b border-yellow-400 cursor-pointer hover:border-white hover:text-yellow-400" (click)="ShowRegisterForm()">Crear cuenta</span></p>
-
-    <ng-template #showRegisterForm>
-        <app-register-form class="w-10/12 sm:w-1/2 lg:w-2/5 xl:w-1/3 xl:max-w-fixed1"></app-register-form>
-        <p class="text-center text-sm text-gray-800 mt-6">¿Ya tiene cuenta?, <span class="font-bold border-b border-yellow-400 cursor-pointer hover:border-white hover:text-yellow-400" (click)="ShowLoginForm()">Iniciar sesión</span></p>
-    </ng-template>
+    <p class="text-center text-sm text-gray-800 mt-6">¿No está registrado? <span class="font-bold border-b border-yellow-400 cursor-pointer hover:border-white hover:text-yellow-400" routerLink="/register">Crear cuenta</span></p>
 
 </div>

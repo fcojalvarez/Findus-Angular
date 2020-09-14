@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import * as jwt_decode from 'jwt-decode';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,18 +14,12 @@ export class UsersService {
   public isAuth: boolean;
   public tokenDecoded: any;
 
-  private token: string;
+  private token = localStorage.getItem('token');
   private url = environment.url;
 
-  constructor( private http: HttpClient, afsAuth: AngularFireAuth, private router: Router ) {
-    this.checkAuth();
-   }
-
-  login(userData): void{
-    this.http.post(`${this.url}/auth/login`, userData).subscribe( (data: any) => {
-      window.localStorage.setItem('token', data.token);
-      this.token = data.token;
-    });
+  // tslint:disable-next-line: max-line-length
+  constructor( private http: HttpClient, afsAuth: AngularFireAuth, private router: Router, private athService: AuthService ) {
+    this.tokenDecoded = this.athService.tokenDecoded;
   }
 
   getUsers(): any{
@@ -80,31 +74,11 @@ export class UsersService {
         }
       });
       alert('El usuario ha sido eliminado correctamente.');
-      this.logout();
+      this.athService.logout();
       return deletedUser;
     } catch (err) {
       alert('No hemos podido eliminar el usuario. Por favor, inténtelo de nuevo már tarde.');
     }
   }
 
-  checkAuth(): boolean {
-    const token = window.localStorage.getItem('token');
-    if (token){
-      this.isAuth = true;
-      this.tokenDecoded = jwt_decode(token);
-      this.token = token;
-      return;
-    }
-    this.isAuth = false;
-    return;
-  }
-
-  logout(): void{
-    window.localStorage.removeItem('token');
-    this.router.navigate(['/']);
-  }
-
-  getComments(): Observable<any>{
-    return this.http.get(`${this.url}/comments`);
-  }
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UsersService } from '../../services/users.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -13,7 +13,7 @@ export class MainNavComponent {
   @Input() isAuth: boolean;
   public showmenu = false;
 
-  constructor( private usersService: UsersService ) {
+  constructor( private athService: AuthService ) {
     this.checkWidth();
   }
 
@@ -24,7 +24,7 @@ export class MainNavComponent {
   }
 
   logout(): void{
-    this.usersService.logout();
+    this.athService.logout();
   }
 
 }

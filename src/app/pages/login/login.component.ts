@@ -7,14 +7,6 @@ import { Component } from '@angular/core';
   ]
 })
 export class LoginComponent {
-  public isShowLoginForm = true;
   constructor() { }
 
-  ShowRegisterForm(): void {
-    this.isShowLoginForm = false;
-  }
-
-  ShowLoginForm(): void {
-    this.isShowLoginForm = true;
-  }
 }

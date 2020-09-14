@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { UsersService } from '../../services/users.service';
+import { AuthService } from '../../services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +9,13 @@ import { UsersService } from '../../services/users.service';
 })
 export class HeaderComponent {
 
-  public userData: any;
-  public isAuth: boolean;
+  public userData: Observable<object>;
+  public token: string;
 
-  constructor( private usersService: UsersService ) {
-    this.usersService.checkAuth();
-    this.isAuth = this.usersService.isAuth;
-    if (this.isAuth){ this.usersService.getUser().subscribe( (user: any) => this.userData = user); }
+  constructor( private usersService: UsersService, private athService: AuthService ) {
+    this.athService.checkAuth();
+    this.token = this.athService.token;
+    if (this.token){ this.usersService.getUser().subscribe( (user: any) => this.userData = user); }
   }
 
 }

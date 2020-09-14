@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl, AsyncValidator } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { UsersService } from '../../services/users.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register-form',
@@ -17,7 +17,7 @@ export class RegisterFormComponent {
 
   private emailPattern: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  constructor( private fb: FormBuilder, private http: HttpClient, private usersService: UsersService ) {
+  constructor( private fb: FormBuilder, private http: HttpClient, private athService: AuthService ) {
     this.formRegister = this.createForm();
   }
 
@@ -47,12 +47,7 @@ export class RegisterFormComponent {
     this.formRegister.reset();
   }
 
-  register(): Promise<void>{
-    const token = window.localStorage.getItem('token');
-    if (token) {
-      alert('Ya hay una sesión activa actualmente');
-      return;
-    }
+  register(){
     const newUser = {
       name: this.name.value,
       surname: this.lastname.value,
@@ -62,10 +57,8 @@ export class RegisterFormComponent {
       image: 'https://cdn0.iconfinder.com/data/icons/user-pictures/100/unknown2-512.png'
     };
 
-    // TODO: CHECK IF USER EXIST
-
     try {
-      this.http.post(`${this.url}/users`, newUser).subscribe();
+      this.athService.register(newUser)
       this.onResetForm();
       alert('Usuario creado correctamente');
     } catch {
